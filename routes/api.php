@@ -91,6 +91,7 @@ Route::post('/topup_refill', function (Request $request) {
     $network = $request->input('network');
     $number = $request->input('number');
     $cash = $request->input('cash');
+    $users = $request->input('users');
 
     $client = new GuzzleHttp\Client();
     $response = $client->request('POST', 'https://api.easysoft.in.th/topup/v2.php', [
@@ -100,7 +101,8 @@ Route::post('/topup_refill', function (Request $request) {
             'mobile' => 'refill',
             'network' => $network,
             'number' => $number,
-            'cash' => $cash
+            'cash' => $cash,
+            'users' => $users
         ]
     ]);
     $xml=new SimpleXMLElement($response->getBody()->getContents());
