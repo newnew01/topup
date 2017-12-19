@@ -12,16 +12,12 @@
 */
 
 use Carbon\Carbon;
+use GuzzleHttp\Exception\GuzzleException;
+use GuzzleHttp\Client;
+use Illuminate\Http\Request;
 
 Route::get('/', function () {
-    return view('welcome');
+    return 'Welcome';
 });
 
-Route::get('/topup/{token}', function ($token) {
-    if(Carbon::now()->format('dmY') == base64_decode($token)){
-        echo 'OK'.Carbon::now()->format('dmY');
-    }else{
-        echo 'NOT OK'.Carbon::now()->format('dmY');
-    }
-    //echo Carbon::now()->format('dmY');
-});
+
